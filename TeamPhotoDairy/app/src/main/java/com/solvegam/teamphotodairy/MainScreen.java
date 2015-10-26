@@ -1,5 +1,6 @@
 package com.solvegam.teamphotodairy;
 
+import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
@@ -8,47 +9,34 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 
-public class MainScreen extends AppCompatActivity implements BlankFragment.OnFragmentInteractionListener {
+public class MainScreen extends Activity {
 
-    public final static String EXTRA_MESSAGE = "com.solvegam.teamphotodairy.MESSAGE";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_screen);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        FragmentManager fm = getFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
 
-        if(savedInstanceState == null) {
-            FragmentManager fm = getFragmentManager();
-            FragmentTransaction ft = fm.beginTransaction();
+        ProjectList list = new ProjectList();
+        ProjectContent content = new ProjectContent();
 
-            BlankFragment f1 = new BlankFragment();
-            BlankFragment2 f2 = new BlankFragment2();
+        ft.add(R.id.project_list_layout,list);
+        ft.add(R.id.project_content_layout,content);
 
-            ft.add(R.id.main_screen_layout, f1);
-
-            if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
-                ft.add(R.id.main_screen_layout, f2);
-            }
-
-            ft.commit();
-        }
+        ft.commit();
     }
 
     @Override
@@ -73,17 +61,4 @@ public class MainScreen extends AppCompatActivity implements BlankFragment.OnFra
         return super.onOptionsItemSelected(item);
     }
 
-    public void sendMessage (View view)
-    {
-        Intent intent = new Intent(this, DisplayMessageActivity.class);
-        EditText editText = (EditText) findViewById(R.id.edit_message);
-        String message = editText.getText().toString();
-        intent.putExtra(EXTRA_MESSAGE,message);
-        startActivity(intent);
-    }
-
-    @Override
-    public void onFragmentInteraction(Uri uri) {
-
-    }
 }

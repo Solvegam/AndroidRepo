@@ -2,9 +2,13 @@
     <string name="app_name">TeamPhotoDairy</string>
     <string name="action_settings">Settings</string>
     <string name="edit_message">Enter a message.</string>
-    <string name="button_send">Send</string>
+    <string name="button">Press Me</string>
+    <string name="cancel_button">Cancel</string>
     <string name="title_main_screen">Main Menu</string>
     <string name="title_activity_display_message">My Message</string>
+    <string name="my_text_vertical">This is my vertical text</string>
+    <string name="my_text_horizontal">This is my horizontal text</string>
+    <string name="hint_for_a_text_box">You can write what ever you want here</string>
 
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

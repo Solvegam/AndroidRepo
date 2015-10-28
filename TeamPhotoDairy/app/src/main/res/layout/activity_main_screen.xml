@@ -8,13 +8,13 @@
     android:orientation="vertical">
 
     <fragment
-        android:name="com.solvegam.teamphotodairy.ProjectList"
+        android:name="com.solvegam.teamphotodairy.fragments.ProjectList"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         tools:layout="@layout/project_list"></fragment>
     <fragment
-        android:name="com.solvegam.teamphotodairy.ProjectList"
+        android:name="com.solvegam.teamphotodairy.fragments.ProjectList"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"

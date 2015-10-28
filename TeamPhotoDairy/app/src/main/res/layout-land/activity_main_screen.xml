@@ -1,26 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_height="match_parent"
-    android:layout_width="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".MainScreen">
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/main_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <LinearLayout
-        android:name="com.solvegam.teamphotodairy.ProjectList"
+    <fragment
         android:id="@+id/project_list_layout"
         android:layout_width="0dp"
-        android:layout_height="match_parent"
         android:layout_weight="1"
-        android:orientation="vertical">
-    </LinearLayout>
+        android:layout_height="match_parent"
+        android:name="com.solvegam.teamphotodairy.fragments.ProjectList"
+        tools:layout="@layout/project_list">
+    </fragment>
 
-    <LinearLayout
-        android:name="com.solvegam.teamphotodairy.ProjectContent"
+    <fragment
         android:id="@+id/project_content_layout"
         android:layout_width="0dp"
-        android:layout_height="match_parent"
         android:layout_weight="3"
-        android:orientation="vertical">
-    </LinearLayout>
-</android.support.design.widget.CoordinatorLayout>
+        android:layout_height="match_parent"
+        android:name="com.solvegam.teamphotodairy.fragments.ProjectContent"
+        tools:layout="@layout/project_content">
+    </fragment>
+
+</LinearLayout>

@@ -8,7 +8,7 @@
         android:layout_height="match_parent">
 
     <fragment
-        android:id="@+id/project_list_layout"
+        android:id="@+id/project_list_layout_horizontal"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="match_parent"
@@ -17,7 +17,7 @@
     </fragment>
 
     <fragment
-        android:id="@+id/project_content_layout"
+        android:id="@+id/project_content_layout_horizontal"
         android:layout_width="0dp"
         android:layout_weight="3"
         android:layout_height="match_parent"

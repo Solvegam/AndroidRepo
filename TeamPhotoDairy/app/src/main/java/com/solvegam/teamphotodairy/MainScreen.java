@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,6 +19,8 @@ import com.solvegam.teamphotodairy.fragments.StartScreen;
 
 public class MainScreen extends Activity implements ProjectList.TextClick{
 
+    public static final String MESSAGE = "com.solvegam.teamphotodairy.MESSAGE_TO_FRAGMENT";
+
     FragmentManager fm;
 
     @Override
@@ -25,15 +29,25 @@ public class MainScreen extends Activity implements ProjectList.TextClick{
         setContentView(R.layout.activity_main_screen);
 
         fm = getFragmentManager();
-//        runStartScreen();  запуск сплэш скрина
+
+    //        запускается сплэш скрин
+    //        runStartScreen();
 
         FragmentTransaction ft = fm.beginTransaction();
 
         ProjectList list = new ProjectList();
         ProjectContent content = new ProjectContent();
 
-        ft.add(R.id.project_list_layout,list);
-        ft.add(R.id.project_content_layout,content).addToBackStack(null);
+
+
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            ft.add(R.id.project_list_layout_horizontal, list);
+            ft.add(R.id.project_content_layout_horizontal, content).addToBackStack(null);
+        }
+        else
+        {
+            ft.add(R.id.project_list_layout_vertical, list);
+        }
 
         ft.commit();
     }
@@ -69,9 +83,17 @@ public class MainScreen extends Activity implements ProjectList.TextClick{
     }
 
     public void textClick (String message) {
-        Fragment fragment = getFragmentManager().findFragmentById(R.id.project_content_layout);
-        if (fragment != null) {
-            ((TextView) fragment.getView().findViewById(R.id.description_of_project)).setText(message);
+
+        if (getResources().getConfiguration().orientation ==Configuration.ORIENTATION_LANDSCAPE)
+        {
+            Fragment fragment = getFragmentManager().findFragmentById(R.id.project_content_layout_horizontal);
+                ((TextView) fragment.getView().findViewById(R.id.description_of_project)).setText(message);
+
+        }
+        else {
+            Intent intent = new Intent(this,ProjectsDetailsActivity.class);
+            intent.putExtra(MESSAGE,message);
+            startActivity(intent);
         }
     }
 

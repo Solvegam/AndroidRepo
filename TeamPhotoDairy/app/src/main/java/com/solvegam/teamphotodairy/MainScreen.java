@@ -33,23 +33,21 @@ public class MainScreen extends Activity implements ProjectList.TextClick{
     //        запускается сплэш скрин
     //        runStartScreen();
 
-        FragmentTransaction ft = fm.beginTransaction();
-
-        ProjectList list = new ProjectList();
-        ProjectContent content = new ProjectContent();
-
-
-
-        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            ft.add(R.id.project_list_layout_horizontal, list);
-            ft.add(R.id.project_content_layout_horizontal, content).addToBackStack(null);
-        }
-        else
-        {
-            ft.add(R.id.project_list_layout_vertical, list);
-        }
-
-        ft.commit();
+//        FragmentTransaction ft = fm.beginTransaction();
+//
+//        ProjectList list = new ProjectList();
+//        ProjectContent content = new ProjectContent();
+//
+//        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+//            ft.add(R.id.project_list_layout_horizontal, list);
+//            ft.add(R.id.project_content_layout_horizontal, content).addToBackStack(null);
+//        }
+//        else
+//        {
+//            ft.add(R.id.project_list_layout_vertical, list);
+//        }
+//
+//        ft.commit();
     }
 
     @Override

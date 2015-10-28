@@ -34,7 +34,7 @@ public class ProjectList extends Fragment {
             TextView text = new TextView(getActivity());
             text.setText("Project " + (i + 1));
             text.setTextSize(25);
-            final String message = "Description of the" + text.getText().toString();
+            final String message = "Description of the " + text.getText().toString();
 
             text.setOnClickListener(new View.OnClickListener() {
                 @Override

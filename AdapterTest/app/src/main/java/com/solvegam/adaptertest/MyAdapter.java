@@ -82,9 +82,10 @@ public class MyAdapter extends BaseAdapter implements Filterable{
                if (constraint != null || constraint.length() != 0){
                     for (int i = 0 ; i < filteredDataSource.size(); i++)
                     {
-                        if (!filteredDataSource.get(i).getName().toUpperCase().equals(constraint.toString().toUpperCase()))
+                        if (!filteredDataSource.get(i).getName().equals(constraint.toString()))
                         {
                             filteredDataSource.remove(i);
+                            i--;
                         }
                     }
                    filteredDataSource.trimToSize(); // может быть здесь съедалась бы память

@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">AdapterTest</string>
+    <string name="just_a_hint">You can filter these items with a filling words in this field</string>
+</resources>

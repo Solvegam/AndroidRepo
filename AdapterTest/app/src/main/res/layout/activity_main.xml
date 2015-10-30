@@ -7,11 +7,14 @@
     tools:context=".MainActivity">
 
     <EditText
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:id="@+id/filter"
         android:layout_alignParentTop="true"
-        android:hint="@string/just_a_hint"/>
+        android:layout_toLeftOf="@+id/send_filter_button"
+        android:layout_alignParentLeft="true"
+        android:hint="@string/just_a_hint"
+        />
 
     <ListView
         android:layout_width="match_parent"
@@ -20,4 +23,12 @@
         android:layout_below="@+id/filter">
 
     </ListView>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Button"
+        android:layout_above="@+id/main_list_view"
+        android:layout_alignParentRight="true"
+        android:id="@+id/send_filter_button" />
 </RelativeLayout>

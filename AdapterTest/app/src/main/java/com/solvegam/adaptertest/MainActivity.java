@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Filter;
 import android.widget.ListView;
@@ -27,31 +29,40 @@ public class MainActivity extends Activity {
         {
             itemList.add(new Item("Name "+i,i*10));
         }
-
-        EditText text = (EditText)findViewById(R.id.filter);
+//          Код ниже нужен был для реализации фильтра через текстовое поле
+//        EditText text = (EditText)findViewById(R.id.filter);
 
         final MyAdapter adapter = new MyAdapter(itemList,this);
 
-        text.addTextChangedListener(new TextWatcher() {
+//        text.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//                Filter filter = adapter.getFilter();
+//                filter.filter(s.toString());
+//            }
+//        });
+
+        Button filterButton = (Button) findViewById(R.id.send_filter_button);
+
+        filterButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
+            public void onClick(View v) {
                 Filter filter = adapter.getFilter();
-                filter.filter(s.toString());
+                filter.filter(((EditText)findViewById(R.id.filter)).getText().toString());
             }
         });
 
-
-        ((ListView) findViewById(R.id.main_list_view)).setAdapter(adapter);
+                ((ListView) findViewById(R.id.main_list_view)).setAdapter(adapter);
     }
 
 

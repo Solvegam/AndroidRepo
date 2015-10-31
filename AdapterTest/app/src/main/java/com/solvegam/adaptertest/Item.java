@@ -5,9 +5,9 @@ package com.solvegam.adaptertest;
  */
 public class Item {
     private String name;
-    private int age;
+    private String age;
 
-    public Item (String name, int age)
+    public Item (String name, String age)
     {
         this.name = name;
         this.age = age;
@@ -21,11 +21,11 @@ public class Item {
         this.name = name;
     }
 
-    public int getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(String age) {
         this.age = age;
     }
 }

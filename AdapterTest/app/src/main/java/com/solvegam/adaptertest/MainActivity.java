@@ -23,13 +23,14 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        itemList = new ArrayList<>();
+        itemList = (ArrayList<Item>)new MyDao(this).getAll();
+//        itemList = new ArrayList<>();
 
-        for (int i = 0; i < 10; i++)
-        {
-            itemList.add(new Item("Name "+i,i*10));
-        }
-//          Код ниже нужен был для реализации фильтра через текстовое поле
+//        for (int i = 0; i < 10; i++)
+//        {
+//            itemList.add(new Item("Name "+i,(i*10)+""));
+//        }
+//        Код ниже нужен был для реализации фильтра через текстовое поле
 //        EditText text = (EditText)findViewById(R.id.filter);
 
         final MyAdapter adapter = new MyAdapter(itemList,this);

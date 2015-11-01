@@ -29,7 +29,6 @@ public class MyDao {
             result.add(new Item(
                     cursor.getString(cursor.getColumnIndexOrThrow(MyDbContract.Test.NAME)),
                     cursor.getString(cursor.getColumnIndexOrThrow(MyDbContract.Test.DESC))));
-
             cursor.moveToNext();
         }
         cursor.close();

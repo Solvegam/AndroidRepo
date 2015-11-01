@@ -23,7 +23,9 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        itemList = (ArrayList<Item>)new MyDao(this).getAll();
+//        itemList = (ArrayList<Item>)new MyDao(this).getAll();
+
+//        код ниже использовался для показа функций адаптера
 //        itemList = new ArrayList<>();
 
 //        for (int i = 0; i < 10; i++)
@@ -33,7 +35,7 @@ public class MainActivity extends Activity {
 //        Код ниже нужен был для реализации фильтра через текстовое поле
 //        EditText text = (EditText)findViewById(R.id.filter);
 
-        final MyAdapter adapter = new MyAdapter(itemList,this);
+//        final MyAdapter adapter = new MyAdapter(itemList,this);
 
 //        text.addTextChangedListener(new TextWatcher() {
 //            @Override
@@ -53,15 +55,16 @@ public class MainActivity extends Activity {
 //            }
 //        });
 
-        Button filterButton = (Button) findViewById(R.id.send_filter_button);
-
-        filterButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Filter filter = adapter.getFilter();
-                filter.filter(((EditText)findViewById(R.id.filter)).getText().toString());
-            }
-        });
+        final MyCursorAdapter adapter = new MyCursorAdapter(this,true);
+//        Button filterButton = (Button) findViewById(R.id.send_filter_button);
+//
+//        filterButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Filter filter = adapter.getFilter();
+//                filter.filter(((EditText)findViewById(R.id.filter)).getText().toString());
+//            }
+//        });
 
                 ((ListView) findViewById(R.id.main_list_view)).setAdapter(adapter);
     }

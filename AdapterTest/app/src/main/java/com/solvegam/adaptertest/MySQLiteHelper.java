@@ -10,11 +10,11 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 public class MySQLiteHelper extends SQLiteOpenHelper {
 
-    public static final int DATABASE_VERSION = 5;
+    public static final int DATABASE_VERSION = 6;
     public static final String DATABASE_NAME = "Test.db";
 
     public static final String CREATE_TEST_QUERY = "CREATE TABLE IF NOT EXISTS " + MyDbContract.Test.TABLE_NAME + " ("
-            + "_ID" + " INTEGER primary key AUTOINCREMENT, "
+            + MyDbContract.Test._ID + " INTEGER primary key AUTOINCREMENT, "
             + MyDbContract.Test.NAME + " TEXT, "
             + MyDbContract.Test.DESC + " TEXT);";
 

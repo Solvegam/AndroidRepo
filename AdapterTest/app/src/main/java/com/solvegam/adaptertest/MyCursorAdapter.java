@@ -16,7 +16,7 @@ import org.w3c.dom.Text;
  * Created by Stas on 31.10.2015.
  */
 public class MyCursorAdapter extends CursorAdapter implements Filterable {
-    private static final String[] ALL_COLUMNS = {MyDbContract.Test.NAME, MyDbContract.Test.DESC};
+    private static final String[] ALL_COLUMNS = {MyDbContract.Test._ID,MyDbContract.Test.NAME, MyDbContract.Test.DESC};
 
     public MyCursorAdapter(Context context, boolean autoRequery) {
         super(context, new MySQLiteHelper(context).getWritableDatabase().query(MyDbContract.Test.TABLE_NAME, ALL_COLUMNS, null, null, null, null, null), autoRequery);
@@ -25,11 +25,11 @@ public class MyCursorAdapter extends CursorAdapter implements Filterable {
     @Override
     public View newView(Context context, Cursor cursor, ViewGroup parent) {
 
-        View view = new View(context);
+        View view = LayoutInflater.from(context).inflate(R.layout.item, parent, false);
 
-        View returnView = view.findViewById(R.id.item_layout);
+        System.out.println(view == null);
 
-        return returnView;
+        return view;
     }
 
     @Override
@@ -38,8 +38,8 @@ public class MyCursorAdapter extends CursorAdapter implements Filterable {
         TextView name = (TextView) view.findViewById(R.id.name_view);
         TextView age = (TextView) view.findViewById(R.id.age_view);
 
-        name.setText(cursor.getString(2));
-        age.setText(cursor.getString(3));
+        name.setText(cursor.getString(1));
+        age.setText(cursor.getString(2));
     }
 
 

@@ -56,15 +56,15 @@ public class MainActivity extends Activity {
 //        });
 
         final MyCursorAdapter adapter = new MyCursorAdapter(this,true);
-//        Button filterButton = (Button) findViewById(R.id.send_filter_button);
-//
-//        filterButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Filter filter = adapter.getFilter();
-//                filter.filter(((EditText)findViewById(R.id.filter)).getText().toString());
-//            }
-//        });
+        Button filterButton = (Button) findViewById(R.id.send_filter_button);
+
+        filterButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Filter filter = adapter.getFilter();
+                filter.filter(((EditText)findViewById(R.id.filter)).getText().toString());
+            }
+        });
 
                 ((ListView) findViewById(R.id.main_list_view)).setAdapter(adapter);
     }

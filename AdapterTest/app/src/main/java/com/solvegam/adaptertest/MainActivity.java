@@ -1,6 +1,9 @@
 package com.solvegam.adaptertest;
 
 import android.app.Activity;
+import android.app.LoaderManager;
+import android.content.Loader;
+import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -14,9 +17,13 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements LoaderManager.LoaderCallbacks<Cursor>{
 
     ArrayList<Item> itemList;
+
+    private MyCursorAdapter adapter;
+
+    private MyLoader loader;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,19 +62,44 @@ public class MainActivity extends Activity {
 //            }
 //        });
 
-        final MyCursorAdapter adapter = new MyCursorAdapter(this,true);
+        getLoaderManager().initLoader(0,null,this);
+
+
+        adapter = new MyCursorAdapter(this,true);
         Button filterButton = (Button) findViewById(R.id.send_filter_button);
 
-        filterButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Filter filter = adapter.getFilter();
-                filter.filter(((EditText)findViewById(R.id.filter)).getText().toString());
-            }
-        });
+//        filterButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Filter filter = adapter.getFilter();
+//                filter.filter(((EditText)findViewById(R.id.filter)).getText().toString());
+//            }
+//        });
 
                 ((ListView) findViewById(R.id.main_list_view)).setAdapter(adapter);
     }
 
 
+    @Override
+    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+        loader = new MyLoader(this);
+        return loader;
+    }
+
+    @Override
+    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+        adapter.changeCursor(data);
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        loader.reset();
+    }
+
+    @Override
+    public void onLoaderReset(Loader<Cursor> loader) {
+        adapter.swapCursor(null);
+    }
 }

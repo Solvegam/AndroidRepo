@@ -13,16 +13,25 @@ public class MyLoader  extends AsyncTaskLoader<Cursor> {
 
     private static final String[] ALL_COLUMNS = {MyDbContract.Test.NAME, MyDbContract.Test.DESC};
 
-    private MySQLiteHelper dbHelper;
+    private MySQLiteHelper dbHelper = new MySQLiteHelper(getContext());
+    private CursorQueryHendler cqh;
 
-    public MyLoader(Context context) {
+    public MyLoader(Context context, CursorQueryHendler cqh) {
         super(context);
+        this.cqh = cqh;
+        System.out.println("Выполнил загрузку лоадера");
     }
 
     @Override
     public Cursor loadInBackground() {
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-        Cursor cursor = db.query(MyDbContract.Test.TABLE_NAME, ALL_COLUMNS, null, null, null, null, null);
+
+        Cursor cursor = cqh.getAllItems();
+        System.out.println("Выполнил получение курсора");
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         return cursor;
     }

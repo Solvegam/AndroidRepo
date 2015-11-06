@@ -20,8 +20,8 @@ public class MyCursorAdapter extends CursorAdapter {
     //здесь пришлось вставить MyDbContract.Test._ID, так как в CursorAdapter нужно, чтобы resultSet содержал колонку id
     private static final String[] ALL_COLUMNS = {MyDbContract.Test._ID,MyDbContract.Test.NAME, MyDbContract.Test.DESC};
 
-    public MyCursorAdapter(Context context, boolean autoRequery) {
-        super(context, new MySQLiteHelper(context).getWritableDatabase().query(MyDbContract.Test.TABLE_NAME, ALL_COLUMNS, null, null, null, null, null), autoRequery);
+    public MyCursorAdapter(Context context,Cursor cursor, boolean autoRequery) {
+        super(context, cursor, autoRequery);
     }
 
     @Override

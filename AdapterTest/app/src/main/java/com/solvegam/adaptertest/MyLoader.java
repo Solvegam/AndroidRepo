@@ -4,12 +4,15 @@ import android.content.AsyncTaskLoader;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 import android.os.AsyncTask;
 
 /**
  * Created by Stas on 05.11.2015.
  */
 public class MyLoader  extends AsyncTaskLoader<Cursor> {
+
+    private final Uri commonUri = Uri.parse("content://com.solvegam.adaptertest/items");
 
     private static final String[] ALL_COLUMNS = {MyDbContract.Test.NAME, MyDbContract.Test.DESC};
 
@@ -25,16 +28,16 @@ public class MyLoader  extends AsyncTaskLoader<Cursor> {
     @Override
     public Cursor loadInBackground() {
 
-        Cursor cursor = cqh.getAllItems();
+        Cursor cursor = getContext().getContentResolver().query(commonUri,null,null,null,null);
         System.out.println("Выполнил получение курсора");
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
 
         return cursor;
     }
 
+
+    protected void onStartLoading()
+    {
+        forceLoad();
+    }
 
 }

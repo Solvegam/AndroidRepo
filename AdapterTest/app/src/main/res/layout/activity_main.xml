@@ -15,20 +15,47 @@
         android:layout_alignParentLeft="true"
         android:hint="@string/just_a_hint"
         />
-
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Filter"
+        android:layout_alignParentRight="true"
+        android:id="@+id/send_filter_button" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Get item"
+        android:layout_below="@+id/filter"
+        android:layout_alignParentLeft="true"
+        android:id="@+id/query_button" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete item"
+        android:layout_below="@+id/filter"
+        android:layout_toRightOf="@+id/query_button"
+        android:id="@+id/delete_button" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Update item"
+        android:layout_below="@+id/filter"
+        android:layout_toRightOf="@+id/delete_button"
+        android:id="@+id/update_button" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add item"
+        android:layout_below="@+id/filter"
+        android:layout_toRightOf="@+id/update_button"
+        android:id="@+id/insert_button" />
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/main_list_view"
-        android:layout_below="@+id/filter">
+        android:layout_below="@id/query_button">
 
     </ListView>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Button"
-        android:layout_above="@+id/main_list_view"
-        android:layout_alignParentRight="true"
-        android:id="@+id/send_filter_button" />
+
 </RelativeLayout>
